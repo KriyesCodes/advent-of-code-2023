@@ -1,12 +1,10 @@
-def parseInput():
-  with open("input.txt") as inputFile:
-    lines = inputFile.readlines()
+def parseInput(PATH):
+  with open(PATH) as inputFile:
+    data = inputFile.readlines()
     schematic = []
-    for i in range(len(lines)):
-      line = []
-      for j in range(len(lines[i])-1):
-        line.append(lines[i][j])
-      schematic.append(line)
+    for i in range(len(data)):
+      schematic.append(data[i].strip())
+
     return schematic
 
 def sumSchematicPartNumbers(schematic):
@@ -29,13 +27,13 @@ def sumSchematicPartNumbers(schematic):
           if ord(nextChar) < 48 or ord(nextChar) > 57:
             if currentNumberIsPart:
               sum += int(currentNumber)
-              print("x+1 less than bounds: " + currentNumber) #debug
+              # print("x+1 less than bounds: " + currentNumber) #debug
             currentNumber = ''
             currentNumberIsPart = False
         else:
           if currentNumberIsPart:
               sum += int(currentNumber)
-              print("x+1 more than bounds: " + currentNumber) # debug
+              # print("x+1 more than bounds: " + currentNumber) # debug
           currentNumber = ''
           currentNumberIsPart = False
 
@@ -62,7 +60,7 @@ def checkForGearSymbolAround(schematic, digitX, digitY):
       checkChar = schematic[digitY+1][digitX-1]
       if (checkChar != '.') and (ord(checkChar) < 48 or ord(checkChar) > 57):
         return True
-    if not(digitX + 1 > len(schematic[digitY - 1]) - 1):
+    if not(digitX + 1 > len(schematic[digitY + 1]) - 1):
       checkChar = schematic[digitY+1][digitX+1]
       if (checkChar != '.') and (ord(checkChar) < 48 or ord(checkChar) > 57):
         return True
@@ -83,4 +81,5 @@ def checkForGearSymbolAround(schematic, digitX, digitY):
   return False
   
 
-print(sumSchematicPartNumbers(parseInput()))
+print("sample 4:",sumSchematicPartNumbers(parseInput("day-3\sample4.txt")))
+print("sample 5:",sumSchematicPartNumbers(parseInput("day-3\sample5.txt")))
