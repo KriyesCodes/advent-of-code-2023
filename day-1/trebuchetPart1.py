@@ -1,5 +1,5 @@
 def parseFile():
-  with open("day-1\example.txt") as inputFile:
+  with open("day-1\input.txt") as inputFile:
     lines = inputFile.readlines()
   return lines
 
@@ -22,6 +22,5 @@ def sumCalibrationValues(document):
     sum += int(calibrationValue)
 
   return sum
-
 
 print(sumCalibrationValues(parseFile()))
