@@ -6,7 +6,7 @@ def parseFile():
       lines.append(data[i].strip())
   return lines
 
-def calculatePoints(cardsData):
+def calculateCards(cardsData):
   cardInstances = {}
   for card in cardsData:
     cardInstancesKey = int(card.split(":")[0].split()[1])
@@ -30,4 +30,4 @@ def calculatePoints(cardsData):
 
   return sum(cardInstances.values())
 
-print(calculatePoints(parseFile()))
+print(calculateCards(parseFile()))
