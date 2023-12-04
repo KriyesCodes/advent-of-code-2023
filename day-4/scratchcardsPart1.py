@@ -7,8 +7,6 @@ def parseFile():
   return lines
 
 def calculatePoints(cardsData):
-  winningNumbers = []
-  acquiredNumbers = []
   totalPoints = 0
 
   for card in cardsData:
